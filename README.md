@@ -98,6 +98,26 @@
             font-size: 0.95rem;
         }
 
+        .cart-badge {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ef4444;
+            color: white;
+            font-size: 0.7rem;
+            min-width: 18px;
+            height: 18px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
         .header-search {
             padding: 12px 16px;
             background: #f8fafc;
@@ -108,6 +128,7 @@
             color: var(--text-light);
             font-size: 0.9rem;
             margin-top: 8px;
+            cursor: pointer;
         }
 
         /* Hero Banner - App Style */
@@ -316,6 +337,12 @@
             margin-left: 4px;
         }
 
+        .service-actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
         .service-action {
             width: 40px;
             height: 40px;
@@ -334,6 +361,14 @@
         .service-action:hover {
             background: var(--primary-light);
             transform: scale(1.1);
+        }
+
+        .add-to-cart-btn {
+            background: var(--accent);
+        }
+
+        .add-to-cart-btn:hover {
+            background: var(--accent-hover);
         }
 
         /* Features/Benefits - App Style */
@@ -385,6 +420,245 @@
         .personal-service .service-icon {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
             color: white;
+        }
+
+        /* Cart Modal */
+        .cart-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            z-index: 2001;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .cart-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .cart-modal {
+            background: white;
+            width: 100%;
+            max-height: 80vh;
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+            transform: translateY(100%);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-modal-overlay.active .cart-modal {
+            transform: translateY(0);
+        }
+
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .cart-close {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
+        }
+
+        .cart-empty i {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-item-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+
+        .cart-item-remove {
+            background: none;
+            border: none;
+            color: #ef4444;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid var(--border);
+            background: var(--secondary);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .cart-total-items {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .cart-total-count {
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        /* Search Modal */
+        .search-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 2002;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .search-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .search-header {
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary);
+        }
+
+        .search-close {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            cursor: pointer;
+        }
+
+        .search-results {
+            padding: 16px;
+            max-height: calc(100vh - 80px);
+            overflow-y: auto;
+        }
+
+        .search-result-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: var(--radius);
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .search-result-item:hover {
+            background: var(--secondary);
+        }
+
+        .search-result-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 100%);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .search-result-info {
+            flex: 1;
+        }
+
+        .search-result-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+
+        .search-result-desc {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-light);
         }
 
         /* Modal - App Style */
@@ -635,9 +909,32 @@
                 font-size: 1.8rem;
             }
 
-            .service-action {
+            .service-actions {
                 width: 100%;
                 margin-top: auto;
+            }
+
+            .cart-modal {
+                max-width: 500px;
+                max-height: 600px;
+                border-radius: var(--radius-lg);
+                margin: auto;
+                align-self: center;
+            }
+
+            .search-modal-overlay {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .search-results {
+                max-width: 600px;
+                max-height: 600px;
+                border-radius: var(--radius-lg);
+                background: white;
+                margin: auto;
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             }
         }
 
@@ -691,6 +988,21 @@
         .animate-fade {
             animation: fadeIn 0.3s ease forwards;
         }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .animate-slide {
+            animation: slideIn 0.3s ease forwards;
+        }
     </style>
 </head>
 <body>
@@ -707,9 +1019,13 @@
                     <span class="mobile-only">Позвонить</span>
                     <span class="desktop-only">+998 (99) 910-00-97</span>
                 </a>
+                <button class="cart-badge" id="cartButton">
+                    <i class="fas fa-shopping-cart" style="font-size: 1.2rem; color: var(--primary);"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
             </div>
         </div>
-        <div class="header-search">
+        <div class="header-search" id="searchButton">
             <i class="fas fa-search"></i>
             <span>Поиск IT-услуг...</span>
         </div>
@@ -767,168 +1083,8 @@
                 <h2 class="section-title">Популярные услуги</h2>
                 <a href="#" class="see-all">Все услуги →</a>
             </div>
-            <div class="services-grid">
-                <!-- Service 1 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Создание сайтов</h3>
-                        <p class="service-description">Лендинги, корпоративные сайты, веб-приложения любой сложности</p>
-                        <div class="service-price">
-                            Индивидуальная цена
-                            <span>• Обсуждается в чате</span>
-                        </div>
-                    </div>
-                    <button class="service-action order-btn" data-service="Создание сайтов">
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Интернет-магазины</h3>
-                        <p class="service-description">Полноценные e-commerce платформы с платежами и CRM</p>
-                        <div class="service-price">
-                            Индивидуальная цена
-                            <span>• Обсуждается в чате</span>
-                        </div>
-                    </div>
-                    <button class="service-action order-btn" data-service="Создание интернет-магазинов">
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fab fa-telegram"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Telegram-боты</h3>
-                        <p class="service-description">Автоматизация продаж, рассылок, поддержки и CRM</p>
-                        <div class="service-price">
-                            Индивидуальная цена
-                            <span>• Обсуждается в чате</span>
-                        </div>
-                    </div>
-                    <button class="service-action order-btn" data-service="Создание Telegram-ботов">
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Service 4 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Instagram-боты</h3>
-                        <p class="service-description">Парсинг, аналитика, автоматизация действий и продвижение</p>
-                        <div class="service-price">
-                            Индивидуальная цена
-                            <span>• Обсуждается в чате</span>
-                        </div>
-                    </div>
-                    <button class="service-action order-btn" data-service="Создание Instagram-ботов">
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Service 5 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Автоматизация</h3>
-                        <p class="service-description">Оптимизация бизнес-процессов и рутинных операций</p>
-                        <div class="service-price">
-                            Индивидуальная цена
-                            <span>• Обсуждается в чате</span>
-                        </div>
-                    </div>
-                    <button class="service-action order-btn" data-service="Автоматизация бизнес-процессов">
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Service 6 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">IT-консультации</h3>
-                        <p class="service-description">Экспертные консультации по технологиям и стратегии</p>
-                        <div class="service-price">
-                            Индивидуальная цена
-                            <span>• Обсуждается в чате</span>
-                        </div>
-                    </div>
-                    <button class="service-action order-btn" data-service="IT-консультации">
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Service 7 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Поддержка проектов</h3>
-                        <p class="service-description">Техническая поддержка, доработка и развитие IT-проектов</p>
-                        <div class="service-price">
-                            Индивидуальная цена
-                            <span>• Обсуждается в чате</span>
-                        </div>
-                    </div>
-                    <button class="service-action order-btn" data-service="Поддержка и сопровождение проектов">
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Service 8 -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Дизайн обложек</h3>
-                        <p class="service-description">Профессиональный дизайн для YouTube, Instagram, Telegram</p>
-                        <div class="service-price">
-                            Индивидуальная цена
-                            <span>• Обсуждается в чате</span>
-                        </div>
-                    </div>
-                    <button class="service-action order-btn" data-service="Создание обложек">
-                        <i class="fas fa-arrow-right"></i>
-                    </button>
-                </div>
-
-                <!-- Personal Service - Special Card -->
-                <div class="service-card personal-service">
-                    <div class="service-icon">
-                        <i class="fas fa-crown"></i>
-                    </div>
-                    <div class="service-content">
-                        <h3 class="service-title">Личные IT-услуги</h3>
-                        <p class="service-description">Индивидуальные решения, нестандартные задачи, персональные IT-проекты</p>
-                        <div class="service-price">
-                            Личный разговор
-                            <span>• Обсуждение деталей в WhatsApp</span>
-                        </div>
-                    </div>
-                    <a href="https://wa.me/998999100097?text=Здравствуйте.%20Хочу%20обсудить%20личную%20IT-услугу.%20Мой%20запрос:" target="_blank" class="service-action">
-                        <i class="fab fa-whatsapp"></i>
-                    </a>
-                </div>
+            <div class="services-grid" id="servicesList">
+                <!-- Service cards will be populated by JavaScript -->
             </div>
         </section>
 
@@ -1038,30 +1194,74 @@
             <i class="fas fa-th-large nav-icon"></i>
             <span>Услуги</span>
         </a>
-        <a href="#" class="nav-item">
+        <button class="nav-item" id="mobileCartButton">
             <i class="fas fa-shopping-cart nav-icon"></i>
-            <span>Заказы</span>
-        </a>
+            <span>Корзина</span>
+            <span class="cart-count" id="mobileCartCount" style="position: absolute; top: 0; right: 25px; background: #ef4444; color: white; font-size: 0.6rem; min-width: 16px; height: 16px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">0</span>
+        </button>
         <a href="tel:+998999100097" class="nav-item">
             <i class="fas fa-phone nav-icon"></i>
             <span>Контакты</span>
         </a>
     </nav>
 
-    <!-- Modal -->
-    <div class="modal-overlay" id="modalOverlay">
+    <!-- Cart Modal -->
+    <div class="cart-modal-overlay" id="cartModal">
+        <div class="cart-modal">
+            <div class="cart-header">
+                <h3 class="cart-title">Корзина услуг</h3>
+                <button class="cart-close" id="cartClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be populated by JavaScript -->
+                <div class="cart-empty" id="emptyCart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>Корзина пуста</p>
+                    <p style="font-size: 0.9rem; margin-top: 8px;">Добавьте услуги из каталога</p>
+                </div>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span class="cart-total-items">Всего услуг:</span>
+                    <span class="cart-total-count" id="cartTotalCount">0</span>
+                </div>
+                <button class="btn btn-primary btn-block" id="checkoutButton" style="display: none;">
+                    <i class="fab fa-whatsapp"></i>
+                    Оформить заказ в WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="search-modal-overlay" id="searchModal">
+        <div class="search-header">
+            <input type="text" class="search-input" id="searchInput" placeholder="Поиск IT-услуг..." autofocus>
+            <button class="search-close" id="searchClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="search-results" id="searchResults">
+            <!-- Search results will be populated by JavaScript -->
+        </div>
+    </div>
+
+    <!-- Order Modal -->
+    <div class="modal-overlay" id="orderModal">
         <div class="modal">
             <div class="modal-icon">
-                <i class="fas fa-lock"></i>
+                <i class="fas fa-shopping-cart"></i>
             </div>
-            <h2 class="modal-title">Ограниченный доступ</h2>
-            <p class="modal-text">Для обсуждения деталей и стоимости данной услуги, пожалуйста, свяжитесь с нами напрямую в WhatsApp.</p>
+            <h2 class="modal-title">Отправить заказ?</h2>
+            <p class="modal-text">Ваш заказ будет отправлен в WhatsApp. Продолжить?</p>
             <div class="modal-actions">
-                <button class="modal-btn modal-btn-primary" id="modalOk">
+                <button class="modal-btn modal-btn-primary" id="confirmOrder">
                     <i class="fab fa-whatsapp"></i>
-                    WhatsApp
+                    Отправить
                 </button>
-                <button class="modal-btn modal-btn-secondary" id="modalCancel">
+                <button class="modal-btn modal-btn-secondary" id="cancelOrder">
                     Отмена
                 </button>
             </div>
@@ -1069,108 +1269,449 @@
     </div>
 
     <script>
+        // Data
+        const services = [
+            {
+                id: 1,
+                title: "Создание сайтов",
+                description: "Лендинги, корпоративные сайты, веб-приложения любой сложности",
+                icon: "fas fa-laptop-code",
+                category: "web"
+            },
+            {
+                id: 2,
+                title: "Интернет-магазины",
+                description: "Полноценные e-commerce платформы с платежами и CRM",
+                icon: "fas fa-shopping-cart",
+                category: "web"
+            },
+            {
+                id: 3,
+                title: "Telegram-боты",
+                description: "Автоматизация продаж, рассылок, поддержки и CRM",
+                icon: "fab fa-telegram",
+                category: "bots"
+            },
+            {
+                id: 4,
+                title: "Instagram-боты",
+                description: "Парсинг, аналитика, автоматизация действий и продвижение",
+                icon: "fab fa-instagram",
+                category: "bots"
+            },
+            {
+                id: 5,
+                title: "Автоматизация",
+                description: "Оптимизация бизнес-процессов и рутинных операций",
+                icon: "fas fa-robot",
+                category: "automation"
+            },
+            {
+                id: 6,
+                title: "IT-консультации",
+                description: "Экспертные консультации по технологиям и стратегии",
+                icon: "fas fa-headset",
+                category: "consulting"
+            },
+            {
+                id: 7,
+                title: "Поддержка проектов",
+                description: "Техническая поддержка, доработка и развитие IT-проектов",
+                icon: "fas fa-tools",
+                category: "support"
+            },
+            {
+                id: 8,
+                title: "Дизайн обложек",
+                description: "Профессиональный дизайн для YouTube, Instagram, Telegram",
+                icon: "fas fa-palette",
+                category: "design"
+            },
+            {
+                id: 9,
+                title: "Личные IT-услуги",
+                description: "Индивидуальные решения, нестандартные задачи, персональные IT-проекты",
+                icon: "fas fa-crown",
+                category: "personal",
+                isPersonal: true
+            }
+        ];
+
+        // State
+        let cart = JSON.parse(localStorage.getItem('it-cart')) || [];
+        let searchResults = [];
+
         // DOM Elements
-        const modalOverlay = document.getElementById('modalOverlay');
-        const modalOk = document.getElementById('modalOk');
-        const modalCancel = document.getElementById('modalCancel');
-        const orderButtons = document.querySelectorAll('.order-btn');
-        let currentService = '';
+        const cartButton = document.getElementById('cartButton');
+        const mobileCartButton = document.getElementById('mobileCartButton');
+        const cartModal = document.getElementById('cartModal');
+        const cartClose = document.getElementById('cartClose');
+        const cartItems = document.getElementById('cartItems');
+        const emptyCart = document.getElementById('emptyCart');
+        const cartCount = document.getElementById('cartCount');
+        const mobileCartCount = document.getElementById('mobileCartCount');
+        const cartTotalCount = document.getElementById('cartTotalCount');
+        const checkoutButton = document.getElementById('checkoutButton');
+        const searchButton = document.getElementById('searchButton');
+        const searchModal = document.getElementById('searchModal');
+        const searchClose = document.getElementById('searchClose');
+        const searchInput = document.getElementById('searchInput');
+        const searchResultsContainer = document.getElementById('searchResults');
+        const servicesList = document.getElementById('servicesList');
+        const orderModal = document.getElementById('orderModal');
+        const confirmOrder = document.getElementById('confirmOrder');
+        const cancelOrder = document.getElementById('cancelOrder');
 
-        // Initialize animations
+        // Initialize
         document.addEventListener('DOMContentLoaded', () => {
-            // Add animation to elements on load
-            const cards = document.querySelectorAll('.service-card, .feature-card');
-            cards.forEach((card, index) => {
-                card.style.animationDelay = `${index * 0.1}s`;
-                card.classList.add('animate-fade');
+            renderServices();
+            updateCartCount();
+            renderCart();
+            
+            // Add event listeners
+            cartButton.addEventListener('click', openCart);
+            mobileCartButton.addEventListener('click', openCart);
+            cartClose.addEventListener('click', closeCart);
+            checkoutButton.addEventListener('click', openOrderModal);
+            searchButton.addEventListener('click', openSearch);
+            searchClose.addEventListener('click', closeSearch);
+            searchInput.addEventListener('input', handleSearch);
+            confirmOrder.addEventListener('click', sendOrderToWhatsApp);
+            cancelOrder.addEventListener('click', closeOrderModal);
+            
+            // Close modals on overlay click
+            cartModal.addEventListener('click', (e) => {
+                if (e.target === cartModal) closeCart();
             });
-        });
-
-        // Modal Logic
-        orderButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                currentService = button.getAttribute('data-service');
-                modalOverlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
+            
+            searchModal.addEventListener('click', (e) => {
+                if (e.target === searchModal) closeSearch();
             });
-        });
-
-        modalCancel.addEventListener('click', () => {
-            modalOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        modalOverlay.addEventListener('click', (e) => {
-            if (e.target === modalOverlay) {
-                modalOverlay.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        modalOk.addEventListener('click', () => {
-            const encodedService = encodeURIComponent(currentService);
-            const whatsappUrl = `https://wa.me/998999100097?text=Здравствуйте.%20Я%20хочу%20заказать%20IT-услугу:%20${encodedService}.%20Пожалуйста,%20предоставьте%20дополнительную%20информацию.`;
-            window.open(whatsappUrl, '_blank');
-            modalOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        // Close modal on Escape
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-                modalOverlay.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                if (this.getAttribute('href') !== '#') {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
+            
+            orderModal.addEventListener('click', (e) => {
+                if (e.target === orderModal) closeOrderModal();
+            });
+            
+            // Close search on Escape
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    closeSearch();
+                    closeCart();
+                    closeOrderModal();
                 }
             });
         });
 
-        // Bottom navigation active state
-        const navItems = document.querySelectorAll('.nav-item');
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navItems.forEach(nav => nav.classList.remove('active'));
-                item.classList.add('active');
-            });
-        });
-
-        // Search functionality
-        const searchInput = document.querySelector('.header-search');
-        searchInput.addEventListener('click', () => {
-            alert('Введите название услуги для поиска...');
-        });
-
-        // Add hover effects for desktop
-        if (window.innerWidth >= 1024) {
-            document.querySelectorAll('.service-card').forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.style.transform = 'translateY(-8px)';
-                    card.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.15)';
-                });
+        // Render Services
+        function renderServices() {
+            servicesList.innerHTML = '';
+            
+            services.forEach(service => {
+                const isInCart = cart.some(item => item.id === service.id);
                 
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'translateY(0)';
-                    card.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
+                const serviceCard = document.createElement('div');
+                serviceCard.className = `service-card ${service.isPersonal ? 'personal-service' : ''}`;
+                serviceCard.innerHTML = `
+                    <div class="service-icon">
+                        <i class="${service.icon}"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3 class="service-title">${service.title}</h3>
+                        <p class="service-description">${service.description}</p>
+                        <div class="service-price">
+                            Индивидуальная цена
+                            <span>• Обсуждается в чате</span>
+                        </div>
+                    </div>
+                    <div class="service-actions">
+                        ${service.isPersonal ? 
+                            `<a href="https://wa.me/998999100097?text=Здравствуйте.%20Хочу%20обсудить%20личную%20IT-услугу.%20Мой%20запрос:" target="_blank" class="service-action">
+                                <i class="fab fa-whatsapp"></i>
+                            </a>` :
+                            `<button class="service-action ${isInCart ? 'add-to-cart-btn' : ''}" data-id="${service.id}" data-title="${service.title}">
+                                <i class="${isInCart ? 'fas fa-check' : 'fas fa-plus'}"></i>
+                            </button>
+                            <button class="service-action order-btn" data-service="${service.title}">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>`
+                        }
+                    </div>
+                `;
+                
+                servicesList.appendChild(serviceCard);
+            });
+            
+            // Add event listeners to service buttons
+            document.querySelectorAll('.order-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const service = button.getAttribute('data-service');
+                    showOrderModal(service);
+                });
+            });
+            
+            document.querySelectorAll('.service-action[data-id]').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const id = parseInt(button.getAttribute('data-id'));
+                    const title = button.getAttribute('data-title');
+                    toggleCartItem(id, title);
                 });
             });
         }
+
+        // Cart Functions
+        function toggleCartItem(id, title) {
+            const existingIndex = cart.findIndex(item => item.id === id);
+            
+            if (existingIndex > -1) {
+                cart.splice(existingIndex, 1);
+            } else {
+                cart.push({ id, title });
+            }
+            
+            saveCart();
+            updateCartCount();
+            renderCart();
+            renderServices();
+        }
+
+        function removeCartItem(id) {
+            cart = cart.filter(item => item.id !== id);
+            saveCart();
+            updateCartCount();
+            renderCart();
+            renderServices();
+        }
+
+        function updateCartCount() {
+            const count = cart.length;
+            cartCount.textContent = count;
+            mobileCartCount.textContent = count;
+            cartTotalCount.textContent = count;
+            
+            if (count > 0) {
+                checkoutButton.style.display = 'block';
+            } else {
+                checkoutButton.style.display = 'none';
+            }
+        }
+
+        function renderCart() {
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.appendChild(emptyCart.cloneNode(true));
+                return;
+            }
+            
+            cart.forEach(item => {
+                const service = services.find(s => s.id === item.id);
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item animate-slide';
+                cartItem.innerHTML = `
+                    <div class="cart-item-icon">
+                        <i class="${service.icon}"></i>
+                    </div>
+                    <div class="cart-item-info">
+                        <div class="cart-item-title">${service.title}</div>
+                        <div style="font-size: 0.8rem; color: var(--text-light);">Индивидуальная цена</div>
+                    </div>
+                    <button class="cart-item-remove" data-id="${item.id}">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            // Add event listeners to remove buttons
+            document.querySelectorAll('.cart-item-remove').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const id = parseInt(button.getAttribute('data-id'));
+                    removeCartItem(id);
+                });
+            });
+        }
+
+        function saveCart() {
+            localStorage.setItem('it-cart', JSON.stringify(cart));
+        }
+
+        // Modal Functions
+        function openCart() {
+            cartModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeCart() {
+            cartModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function openSearch() {
+            searchModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            searchInput.focus();
+        }
+
+        function closeSearch() {
+            searchModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            searchInput.value = '';
+            searchResultsContainer.innerHTML = '';
+        }
+
+        function openOrderModal(service = null) {
+            if (service) {
+                // For single service order
+                const encodedService = encodeURIComponent(service);
+                const whatsappUrl = `https://wa.me/998999100097?text=Здравствуйте.%20Я%20хочу%20заказать%20IT-услугу:%20${encodedService}.%20Пожалуйста,%20предоставьте%20дополнительную%20информацию.`;
+                window.open(whatsappUrl, '_blank');
+            } else {
+                // For cart order
+                orderModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+
+        function closeOrderModal() {
+            orderModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Search Functions
+        function handleSearch(e) {
+            const query = e.target.value.toLowerCase().trim();
+            
+            if (query.length === 0) {
+                searchResultsContainer.innerHTML = '';
+                return;
+            }
+            
+            searchResults = services.filter(service => 
+                service.title.toLowerCase().includes(query) || 
+                service.description.toLowerCase().includes(query)
+            );
+            
+            renderSearchResults();
+        }
+
+        function renderSearchResults() {
+            searchResultsContainer.innerHTML = '';
+            
+            if (searchResults.length === 0) {
+                searchResultsContainer.innerHTML = `
+                    <div class="no-results">
+                        <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 16px; opacity: 0.5;"></i>
+                        <p>Ничего не найдено</p>
+                        <p style="font-size: 0.9rem; margin-top: 8px;">Попробуйте другой запрос</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            searchResults.forEach(service => {
+                const resultItem = document.createElement('div');
+                resultItem.className = 'search-result-item';
+                resultItem.innerHTML = `
+                    <div class="search-result-icon">
+                        <i class="${service.icon}"></i>
+                    </div>
+                    <div class="search-result-info">
+                        <div class="search-result-title">${service.title}</div>
+                        <div class="search-result-desc">${service.description}</div>
+                    </div>
+                `;
+                
+                resultItem.addEventListener('click', () => {
+                    closeSearch();
+                    // Scroll to services
+                    document.getElementById('services').scrollIntoView({ behavior: 'smooth' });
+                    // Highlight the service
+                    setTimeout(() => {
+                        const serviceCard = document.querySelector(`[data-id="${service.id}"]`)?.closest('.service-card');
+                        if (serviceCard) {
+                            serviceCard.style.animation = 'none';
+                            setTimeout(() => {
+                                serviceCard.style.animation = 'pulse 0.5s';
+                                serviceCard.style.backgroundColor = 'rgba(30, 64, 175, 0.05)';
+                                setTimeout(() => {
+                                    serviceCard.style.backgroundColor = '';
+                                }, 2000);
+                            }, 10);
+                        }
+                    }, 300);
+                });
+                
+                searchResultsContainer.appendChild(resultItem);
+            });
+        }
+
+        // WhatsApp Order Function
+        function sendOrderToWhatsApp() {
+            if (cart.length === 0) return;
+            
+            let message = "Здравствуйте! Хочу заказать следующие IT-услуги:\n\n";
+            
+            cart.forEach((item, index) => {
+                const service = services.find(s => s.id === item.id);
+                message += `${index + 1}. ${service.title}\n`;
+            });
+            
+            message += `\nВсего услуг: ${cart.length}\n`;
+            message += "Пожалуйста, свяжитесь со мной для обсуждения деталей и стоимости.";
+            
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/998999100097?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+            
+            // Clear cart after order
+            cart = [];
+            saveCart();
+            updateCartCount();
+            renderCart();
+            renderServices();
+            
+            closeOrderModal();
+            closeCart();
+        }
+
+        // Show single service order modal
+        function showOrderModal(service) {
+            const modal = document.querySelector('.modal-overlay');
+            const modalTitle = modal.querySelector('.modal-title');
+            const modalText = modal.querySelector('.modal-text');
+            const modalOk = modal.querySelector('.modal-btn-primary');
+            
+            modalTitle.textContent = 'Заказать услугу?';
+            modalText.textContent = `Вы хотите заказать услугу: "${service}"?`;
+            
+            modalOk.innerHTML = '<i class="fab fa-whatsapp"></i> Перейти в WhatsApp';
+            modalOk.onclick = () => {
+                const encodedService = encodeURIComponent(service);
+                const whatsappUrl = `https://wa.me/998999100097?text=Здравствуйте.%20Я%20хочу%20заказать%20IT-услугу:%20${encodedService}.%20Пожалуйста,%20предоставьте%20дополнительную%20информацию.`;
+                window.open(whatsappUrl, '_blank');
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            };
+            
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Add pulse animation for highlighting
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0% { box-shadow: 0 0 0 0 rgba(30, 64, 175, 0.4); }
+                70% { box-shadow: 0 0 0 10px rgba(30, 64, 175, 0); }
+                100% { box-shadow: 0 0 0 0 rgba(30, 64, 175, 0); }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
