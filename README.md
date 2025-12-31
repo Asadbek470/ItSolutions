@@ -48,6 +48,46 @@
             padding: 0 16px;
         }
 
+        /* Promo Banner */
+        .promo-banner {
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            color: #78350f;
+            padding: 12px 16px;
+            text-align: center;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            animation: pulse 2s infinite;
+        }
+
+        .promo-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        .promo-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .promo-timer {
+            font-weight: 700;
+            color: #dc2626;
+            background: white;
+            padding: 2px 8px;
+            border-radius: 20px;
+            margin-left: 8px;
+            display: inline-block;
+            animation: heartbeat 1.5s infinite;
+        }
+
         /* Header - Mobile App Style */
         .app-header {
             position: sticky;
@@ -100,6 +140,9 @@
 
         .cart-badge {
             position: relative;
+            background: none;
+            border: none;
+            cursor: pointer;
         }
 
         .cart-count {
@@ -204,6 +247,99 @@
 
         .btn-block {
             width: 100%;
+        }
+
+        /* Daily Prize Section */
+        .daily-prize {
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+            color: white;
+            padding: 20px;
+            border-radius: var(--radius-lg);
+            margin: 20px 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .daily-prize::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.1;
+        }
+
+        .prize-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .prize-subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .prize-item {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 16px;
+            border-radius: var(--radius);
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .prize-item-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .prize-item-desc {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .win-button {
+            background: white;
+            color: #7c3aed;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .win-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+        }
+
+        .winner-info {
+            margin-top: 16px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
         }
 
         /* Quick Actions - App Style */
@@ -757,6 +893,27 @@
             border: 1px solid var(--border);
         }
 
+        /* Win Modal */
+        .win-modal .modal-icon {
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+            color: white;
+        }
+
+        .prize-details {
+            text-align: left;
+            background: #f8fafc;
+            padding: 16px;
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+        }
+
+        .prize-name {
+            font-weight: 700;
+            color: #7c3aed;
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+
         /* Bottom Navigation - App Style */
         .bottom-nav {
             position: fixed;
@@ -781,6 +938,9 @@
             font-size: 0.75rem;
             transition: var(--transition);
             flex: 1;
+            background: none;
+            border: none;
+            cursor: pointer;
         }
 
         .nav-item.active {
@@ -985,6 +1145,23 @@
             }
         }
 
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
         .animate-fade {
             animation: fadeIn 0.3s ease forwards;
         }
@@ -1003,9 +1180,48 @@
         .animate-slide {
             animation: slideIn 0.3s ease forwards;
         }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #f59e0b;
+            top: 0;
+            opacity: 0;
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        .confetti:nth-child(odd) {
+            background: #ef4444;
+        }
+
+        .confetti:nth-child(even) {
+            background: #3b82f6;
+        }
+
+        .confetti:nth-child(3n) {
+            background: #10b981;
+        }
+
+        .confetti:nth-child(5n) {
+            width: 6px;
+            height: 6px;
+            animation-duration: 2s;
+        }
     </style>
 </head>
 <body>
+    <!-- Promo Banner -->
+    <div class="promo-banner">
+        <div class="promo-text">
+            🎁 АКЦИЯ: Выиграйте услугу БЕСПЛАТНО до 
+            <span class="promo-timer" id="promoTimer">5 января</span>
+            🎁
+        </div>
+    </div>
+
     <!-- Mobile App Header -->
     <header class="app-header">
         <div class="header-top">
@@ -1046,6 +1262,26 @@
                     <i class="fab fa-whatsapp"></i>
                     WhatsApp
                 </a>
+            </div>
+        </section>
+
+        <!-- Daily Prize Section -->
+        <section class="daily-prize" id="dailyPrize">
+            <h2 class="prize-title">🎁 Ежедневный розыгрыш! 🎁</h2>
+            <p class="prize-subtitle">Попробуйте удачу и выиграйте услугу БЕСПЛАТНО!</p>
+            
+            <div class="prize-item">
+                <div class="prize-item-name" id="prizeName">Создание Telegram-бота</div>
+                <div class="prize-item-desc" id="prizeDesc">Автоматизация продаж, рассылок и поддержки</div>
+            </div>
+            
+            <button class="win-button" id="winButton">
+                <i class="fas fa-gift"></i>
+                Испытать удачу
+            </button>
+            
+            <div class="winner-info" id="winnerInfo">
+                Сегодня уже выиграли: <span id="winnerCount">0</span> человек
             </div>
         </section>
 
@@ -1199,10 +1435,10 @@
             <span>Корзина</span>
             <span class="cart-count" id="mobileCartCount" style="position: absolute; top: 0; right: 25px; background: #ef4444; color: white; font-size: 0.6rem; min-width: 16px; height: 16px; border-radius: 8px; display: flex; align-items: center; justify-content: center;">0</span>
         </button>
-        <a href="tel:+998999100097" class="nav-item">
-            <i class="fas fa-phone nav-icon"></i>
-            <span>Контакты</span>
-        </a>
+        <button class="nav-item" id="mobilePrizeButton">
+            <i class="fas fa-gift nav-icon"></i>
+            <span>Подарок</span>
+        </button>
     </nav>
 
     <!-- Cart Modal -->
@@ -1255,7 +1491,7 @@
                 <i class="fas fa-shopping-cart"></i>
             </div>
             <h2 class="modal-title">Отправить заказ?</h2>
-            <p class="modal-text">Ваш заказ будет отправлен в WhatsApp. Продолжить?</p>
+            <p class="modal-text" id="orderModalText">Ваш заказ будет отправлен в WhatsApp. Продолжить?</p>
             <div class="modal-actions">
                 <button class="modal-btn modal-btn-primary" id="confirmOrder">
                     <i class="fab fa-whatsapp"></i>
@@ -1267,6 +1503,34 @@
             </div>
         </div>
     </div>
+
+    <!-- Win Modal -->
+    <div class="modal-overlay win-modal" id="winModal">
+        <div class="modal">
+            <div class="modal-icon">
+                <i class="fas fa-gift"></i>
+            </div>
+            <h2 class="modal-title" id="winModalTitle">Поздравляем! 🎉</h2>
+            <div class="prize-details">
+                <div class="prize-name" id="wonPrizeName">Создание Telegram-бота</div>
+                <p>Вы выиграли эту услугу БЕСПЛАТНО!</p>
+                <p>Услуга будет предоставлена бесплатно при заказе любой другой услуги.</p>
+            </div>
+            <p class="modal-text">Хотите добавить выигранную услугу в корзину и оформить заказ?</p>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-primary" id="addPrizeToCart">
+                    <i class="fas fa-cart-plus"></i>
+                    Добавить и заказать
+                </button>
+                <button class="modal-btn modal-btn-secondary" id="closeWinModal">
+                    Позже
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confetti Container -->
+    <div id="confettiContainer"></div>
 
     <script>
         // Data
@@ -1340,6 +1604,9 @@
         // State
         let cart = JSON.parse(localStorage.getItem('it-cart')) || [];
         let searchResults = [];
+        let dailyPrize = null;
+        let todayWinners = parseInt(localStorage.getItem('today-winners')) || 0;
+        let userWonToday = localStorage.getItem('user-won-today') === 'true';
 
         // DOM Elements
         const cartButton = document.getElementById('cartButton');
@@ -1359,14 +1626,29 @@
         const searchResultsContainer = document.getElementById('searchResults');
         const servicesList = document.getElementById('servicesList');
         const orderModal = document.getElementById('orderModal');
+        const orderModalText = document.getElementById('orderModalText');
         const confirmOrder = document.getElementById('confirmOrder');
         const cancelOrder = document.getElementById('cancelOrder');
+        const winButton = document.getElementById('winButton');
+        const winModal = document.getElementById('winModal');
+        const winModalTitle = document.getElementById('winModalTitle');
+        const wonPrizeName = document.getElementById('wonPrizeName');
+        const addPrizeToCart = document.getElementById('addPrizeToCart');
+        const closeWinModal = document.getElementById('closeWinModal');
+        const prizeName = document.getElementById('prizeName');
+        const prizeDesc = document.getElementById('prizeDesc');
+        const winnerInfo = document.getElementById('winnerInfo');
+        const winnerCount = document.getElementById('winnerCount');
+        const mobilePrizeButton = document.getElementById('mobilePrizeButton');
+        const promoTimer = document.getElementById('promoTimer');
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
+            initDailyPrize();
             renderServices();
             updateCartCount();
             renderCart();
+            updatePromoTimer();
             
             // Add event listeners
             cartButton.addEventListener('click', openCart);
@@ -1378,6 +1660,12 @@
             searchInput.addEventListener('input', handleSearch);
             confirmOrder.addEventListener('click', sendOrderToWhatsApp);
             cancelOrder.addEventListener('click', closeOrderModal);
+            winButton.addEventListener('click', tryToWin);
+            addPrizeToCart.addEventListener('click', addPrizeAndOrder);
+            closeWinModal.addEventListener('click', closeWinModalFunc);
+            mobilePrizeButton.addEventListener('click', () => {
+                document.getElementById('dailyPrize').scrollIntoView({ behavior: 'smooth' });
+            });
             
             // Close modals on overlay click
             cartModal.addEventListener('click', (e) => {
@@ -1392,15 +1680,57 @@
                 if (e.target === orderModal) closeOrderModal();
             });
             
-            // Close search on Escape
+            winModal.addEventListener('click', (e) => {
+                if (e.target === winModal) closeWinModalFunc();
+            });
+            
+            // Close modals on Escape
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     closeSearch();
                     closeCart();
                     closeOrderModal();
+                    closeWinModalFunc();
                 }
             });
         });
+
+        // Initialize Daily Prize
+        function initDailyPrize() {
+            // Check if it's a new day
+            const today = new Date().toDateString();
+            const lastPrizeDate = localStorage.getItem('last-prize-date');
+            
+            if (lastPrizeDate !== today) {
+                // New day - reset
+                localStorage.setItem('last-prize-date', today);
+                localStorage.setItem('today-winners', '0');
+                localStorage.setItem('user-won-today', 'false');
+                todayWinners = 0;
+                userWonToday = false;
+                
+                // Select random prize
+                const eligibleServices = services.filter(s => !s.isPersonal);
+                dailyPrize = eligibleServices[Math.floor(Math.random() * eligibleServices.length)];
+                localStorage.setItem('daily-prize', JSON.stringify(dailyPrize));
+            } else {
+                // Same day - load existing prize
+                dailyPrize = JSON.parse(localStorage.getItem('daily-prize')) || 
+                    services.find(s => s.id === 3); // Default to Telegram bot
+            }
+            
+            // Update display
+            prizeName.textContent = dailyPrize.title;
+            prizeDesc.textContent = dailyPrize.description;
+            winnerCount.textContent = todayWinners;
+            
+            // Update win button if user already won today
+            if (userWonToday) {
+                winButton.innerHTML = '<i class="fas fa-check"></i> Вы уже участвовали сегодня';
+                winButton.style.background = '#10b981';
+                winButton.disabled = true;
+            }
+        }
 
         // Render Services
         function renderServices() {
@@ -1425,7 +1755,7 @@
                     </div>
                     <div class="service-actions">
                         ${service.isPersonal ? 
-                            `<a href="https://wa.me/998999100097?text=Здравствуйте.%20Хочу%20обсудить%20личную%20IT-услугу.%20Мой%20запрос:" target="_blank" class="service-action">
+                            `<a href="https://wa.me/998999100097?text=${encodeURIComponent(`Здравствуйте. Хочу обсудить личную IT-услугу: ${service.title}. Мой запрос:`)}" target="_blank" class="service-action">
                                 <i class="fab fa-whatsapp"></i>
                             </a>` :
                             `<button class="service-action ${isInCart ? 'add-to-cart-btn' : ''}" data-id="${service.id}" data-title="${service.title}">
@@ -1445,8 +1775,8 @@
             document.querySelectorAll('.order-btn').forEach(button => {
                 button.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    const service = button.getAttribute('data-service');
-                    showOrderModal(service);
+                    const serviceTitle = button.getAttribute('data-service');
+                    showSingleOrderModal(serviceTitle);
                 });
             });
             
@@ -1563,21 +1893,18 @@
             searchResultsContainer.innerHTML = '';
         }
 
-        function openOrderModal(service = null) {
-            if (service) {
-                // For single service order
-                const encodedService = encodeURIComponent(service);
-                const whatsappUrl = `https://wa.me/998999100097?text=Здравствуйте.%20Я%20хочу%20заказать%20IT-услугу:%20${encodedService}.%20Пожалуйста,%20предоставьте%20дополнительную%20информацию.`;
-                window.open(whatsappUrl, '_blank');
-            } else {
-                // For cart order
-                orderModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
+        function openOrderModal() {
+            orderModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
         }
 
         function closeOrderModal() {
             orderModal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeWinModalFunc() {
+            winModal.classList.remove('active');
             document.body.style.overflow = 'auto';
         }
 
@@ -1649,69 +1976,163 @@
             });
         }
 
-        // WhatsApp Order Function
+        // Try to Win Function
+        function tryToWin() {
+            if (userWonToday) {
+                alert('Вы уже участвовали в розыгрыше сегодня. Попробуйте завтра!');
+                return;
+            }
+            
+            // 30% chance to win
+            const won = Math.random() < 0.3;
+            
+            if (won) {
+                // User wins!
+                todayWinners++;
+                userWonToday = true;
+                localStorage.setItem('today-winners', todayWinners.toString());
+                localStorage.setItem('user-won-today', 'true');
+                
+                // Update UI
+                winnerCount.textContent = todayWinners;
+                winButton.innerHTML = '<i class="fas fa-check"></i> Вы уже участвовали сегодня';
+                winButton.style.background = '#10b981';
+                winButton.disabled = true;
+                
+                // Show win modal
+                wonPrizeName.textContent = dailyPrize.title;
+                winModalTitle.textContent = 'Поздравляем! 🎉 Вы выиграли!';
+                winModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                
+                // Create confetti
+                createConfetti();
+            } else {
+                // User loses
+                alert('К сожалению, вы не выиграли сегодня. Попробуйте завтра!');
+            }
+        }
+
+        // Add Prize to Cart and Order
+        function addPrizeAndOrder() {
+            // Add prize to cart if not already there
+            const isPrizeInCart = cart.some(item => item.id === dailyPrize.id);
+            if (!isPrizeInCart) {
+                cart.push({ id: dailyPrize.id, title: dailyPrize.title });
+                saveCart();
+                updateCartCount();
+                renderCart();
+                renderServices();
+            }
+            
+            closeWinModalFunc();
+            openOrderModal();
+        }
+
+        // Show Single Service Order Modal
+        function showSingleOrderModal(serviceTitle) {
+            orderModalText.textContent = `Вы хотите заказать услугу: "${serviceTitle}"? Заказ будет отправлен в WhatsApp.`;
+            
+            // Store the service for ordering
+            orderModal.dataset.service = serviceTitle;
+            orderModal.dataset.isSingle = 'true';
+            
+            openOrderModal();
+        }
+
+        // WhatsApp Order Functions
         function sendOrderToWhatsApp() {
-            if (cart.length === 0) return;
+            const isSingleOrder = orderModal.dataset.isSingle === 'true';
             
-            let message = "Здравствуйте! Хочу заказать следующие IT-услуги:\n\n";
-            
-            cart.forEach((item, index) => {
-                const service = services.find(s => s.id === item.id);
-                message += `${index + 1}. ${service.title}\n`;
-            });
-            
-            message += `\nВсего услуг: ${cart.length}\n`;
-            message += "Пожалуйста, свяжитесь со мной для обсуждения деталей и стоимости.";
-            
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/998999100097?text=${encodedMessage}`;
-            
-            window.open(whatsappUrl, '_blank');
-            
-            // Clear cart after order
-            cart = [];
-            saveCart();
-            updateCartCount();
-            renderCart();
-            renderServices();
+            if (isSingleOrder) {
+                // Single service order
+                const serviceTitle = orderModal.dataset.service;
+                const message = `Здравствуйте! Хочу заказать IT-услугу: ${serviceTitle}. Пожалуйста, свяжитесь со мной для обсуждения деталей и стоимости.`;
+                sendWhatsAppMessage(message);
+            } else {
+                // Cart order
+                if (cart.length === 0) return;
+                
+                let message = "Здравствуйте! Хочу заказать следующие IT-услуги:\n\n";
+                
+                cart.forEach((item, index) => {
+                    const service = services.find(s => s.id === item.id);
+                    message += `${index + 1}. ${service.title}\n`;
+                });
+                
+                message += `\nВсего услуг: ${cart.length}\n`;
+                message += "Пожалуйста, свяжитесь со мной для обсуждения деталей и стоимости.";
+                
+                sendWhatsAppMessage(message);
+                
+                // Clear cart after order
+                cart = [];
+                saveCart();
+                updateCartCount();
+                renderCart();
+                renderServices();
+            }
             
             closeOrderModal();
             closeCart();
         }
 
-        // Show single service order modal
-        function showOrderModal(service) {
-            const modal = document.querySelector('.modal-overlay');
-            const modalTitle = modal.querySelector('.modal-title');
-            const modalText = modal.querySelector('.modal-text');
-            const modalOk = modal.querySelector('.modal-btn-primary');
-            
-            modalTitle.textContent = 'Заказать услугу?';
-            modalText.textContent = `Вы хотите заказать услугу: "${service}"?`;
-            
-            modalOk.innerHTML = '<i class="fab fa-whatsapp"></i> Перейти в WhatsApp';
-            modalOk.onclick = () => {
-                const encodedService = encodeURIComponent(service);
-                const whatsappUrl = `https://wa.me/998999100097?text=Здравствуйте.%20Я%20хочу%20заказать%20IT-услугу:%20${encodedService}.%20Пожалуйста,%20предоставьте%20дополнительную%20информацию.`;
-                window.open(whatsappUrl, '_blank');
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            };
-            
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
+        function sendWhatsAppMessage(message) {
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/998999100097?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
         }
 
-        // Add pulse animation for highlighting
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes pulse {
-                0% { box-shadow: 0 0 0 0 rgba(30, 64, 175, 0.4); }
-                70% { box-shadow: 0 0 0 10px rgba(30, 64, 175, 0); }
-                100% { box-shadow: 0 0 0 0 rgba(30, 64, 175, 0); }
+        // Confetti Animation
+        function createConfetti() {
+            const container = document.getElementById('confettiContainer');
+            const colors = ['#f59e0b', '#ef4444', '#3b82f6', '#10b981', '#8b5cf6'];
+            
+            for (let i = 0; i < 150; i++) {
+                const confetti = document.createElement('div');
+                confetti.className = 'confetti';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                
+                const animation = confetti.animate([
+                    { 
+                        top: '-10px',
+                        opacity: 1,
+                        transform: `rotate(${Math.random() * 360}deg)`
+                    },
+                    { 
+                        top: '100vh',
+                        opacity: 0,
+                        transform: `rotate(${Math.random() * 720}deg)`
+                    }
+                ], {
+                    duration: Math.random() * 3000 + 2000,
+                    easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
+                });
+                
+                container.appendChild(confetti);
+                animation.onfinish = () => confetti.remove();
             }
-        `;
-        document.head.appendChild(style);
+        }
+
+        // Promo Timer
+        function updatePromoTimer() {
+            const targetDate = new Date('2025-01-05T23:59:59').getTime();
+            const now = new Date().getTime();
+            const timeLeft = targetDate - now;
+            
+            if (timeLeft > 0) {
+                const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                promoTimer.textContent = `${days}д ${hours}ч`;
+            } else {
+                promoTimer.textContent = 'Акция завершена';
+            }
+        }
+
+        // Update timer every minute
+        setInterval(updatePromoTimer, 60000);
     </script>
 </body>
 </html>
